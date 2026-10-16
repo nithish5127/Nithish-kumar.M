@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nithish Kumar M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#1d7373;--deep:#0f3f40;--yellow:#f2b632;--win:#e2dfd3;--ink:#13201f;--white:#fbfaf5;
+--d:"Silkscreen","Courier New",monospace;--b:"VT323","Courier New",monospace;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:22px/1.25 var(--b);color:var(--ink);background:var(--teal);
+background-image:radial-gradient(var(--deep) 1.2px,transparent 1.4px);background-size:14px 14px;
+padding:44px 12px 84px;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+/* menubar + taskbar */
+.bar{position:fixed;left:0;right:0;background:var(--win);border:2px solid var(--ink);z-index:20;display:flex;align-items:center;gap:14px;padding:0 10px;font-size:20px}
+.top{top:0;height:34px;border-width:0 0 2px}
+.top b{font-family:var(--d);font-size:13px}
+.top a{text-decoration:none;display:none}
+.bot{bottom:0;height:56px;border-width:2px 0 0;padding-bottom:env(safe-area-inset-bottom)}
+.btn{font:inherit;font-family:var(--d);font-size:13px;background:var(--win);color:var(--ink);border:2px solid var(--ink);padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-block;
+box-shadow:3px 3px 0 var(--ink);transition:transform .15s var(--ease),box-shadow .15s var(--ease)}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.y{background:var(--yellow)}
+.clock{margin-left:auto;font-size:20px}
+#bin{background:none;border:0;cursor:pointer;padding:4px;display:flex}
+/* windows */
+main{max-width:1040px;margin:0 auto;display:grid;gap:34px}
+.w{background:var(--win);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);scroll-margin-top:50px}
+.t{background:var(--ink);color:var(--white);font-family:var(--d);font-size:12px;padding:7px 8px;display:flex;justify-content:space-between;align-items:center}
+.t i{width:16px;height:16px;border:2px solid var(--white);display:block;position:relative}
+.t i::after{content:"";position:absolute;inset:2px;background:var(--yellow)}
+.c{padding:20px 18px 26px}
+h1{font-family:var(--d);font-weight:700;font-size:clamp(40px,13.5vw,132px);line-height:.92;letter-spacing:-.02em;word-break:break-word}
+h2{font-family:var(--d);font-size:clamp(24px,6vw,40px);margin-bottom:14px;line-height:1.05}
+p+p{margin-top:12px}
+.hero .c{display:grid;gap:22px}
+.mono{width:120px;height:auto;background:var(--yellow);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:10px}
+.tag{font-size:30px;max-width:22ch;line-height:1}
+.now{background:var(--ink);color:var(--yellow);padding:6px 10px;display:inline-block}
+.now::after{content:"_";animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+/* skills */
+dl{display:grid;gap:0}
+dl div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px dashed #9a978a;padding:8px 0}
+dt{font-size:26px}
+dd{font-family:var(--d);font-size:11px;padding:4px 8px;border:2px solid var(--ink);background:var(--white);white-space:nowrap}
+dd.k{background:var(--yellow)}dd.l{background:var(--teal);color:var(--white)}
+/* journey: three different panes */
+.j{display:grid;gap:16px}
+.j section{padding:14px;border:2px solid var(--ink)}
+.j .a{background:var(--white)}
+.j .b{background:var(--yellow);transform:rotate(-.6deg)}
+.j .d{background:var(--deep);color:var(--white);border-style:dashed}
+.j h3{font-family:var(--d);font-size:16px;margin-bottom:8px}
+ul{padding-left:20px}li{margin:4px 0}
+.fun{display:grid;gap:10px}
+.fun p{background:var(--white);border:2px solid var(--ink);padding:10px 12px;margin:0}
+.fun p:nth-child(even){margin-left:18px}
+.big{font-size:28px;display:block;word-break:break-all}
+/* dialog */
+dialog{border:2px solid var(--ink);background:var(--win);padding:0;box-shadow:8px 8px 0 var(--ink);max-width:min(360px,90vw);margin:auto}
+dialog::backdrop{background:rgba(15,63,64,.7)}
+dialog[open]{animation:pop .3s var(--ease)}
+@keyframes pop{from{transform:scale(.85)}}
+/* trail */
+.px{position:fixed;width:10px;height:10px;background:var(--yellow);border:2px solid var(--ink);pointer-events:none;z-index:50;animation:fade .7s linear forwards}
+@keyframes fade{to{opacity:0;transform:translateY(8px) scale(.4)}}
+/* opening */
+#intro{position:fixed;inset:0;z-index:100;background:var(--deep);display:grid;place-items:center;
+clip-path:circle(150% at 50% 50%)}
+#intro .disc{position:absolute;inset:0;background:var(--yellow);clip-path:circle(0 at 50% 50%);animation:disc 1.3s .15s var(--ease) forwards}
+#intro .boot{position:relative;font-family:var(--d);font-size:15px;text-align:center;line-height:1.8}
+#intro .boot b{font-size:34px;display:block}
+#intro.out{animation:out .6s var(--ease) forwards}
+#skip{position:absolute;right:14px;bottom:18px;z-index:2}
+@keyframes disc{to{clip-path:circle(150% at 50% 50%)}}
+@keyframes out{to{clip-path:circle(0 at 50% 50%)}}
+.rise{animation:up .8s .1s var(--ease) both}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+@media(min-width:760px){
+body{font-size:24px;padding:56px 28px 96px}
+.top a{display:inline}
+.hero .c{grid-template-columns:1fr 150px;align-items:start}
+.hero h1,.hero .tag,.hero .now,.hero .row{grid-column:1}
+.hero .mono{grid-column:2;grid-row:1;width:150px}
+.j{grid-template-columns:1fr 1fr 1fr;align-items:start}
+.j .b{margin-top:30px}
+#about{width:78%}#skills{width:70%;margin-left:auto}#journey{width:100%}#beyond{width:66%}#contact{width:76%;margin-left:auto}
+.c{padding:26px 30px 32px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="intro" aria-hidden="false">
+  <div class="disc"></div>
+  <div class="boot"><b>NK.OS</b>starting up</div>
+  <button id="skip" class="btn">Skip</button>
+</div>
+
+<div class="bar top"><b>NK.OS</b><a href="#about">About</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#beyond">Beyond code</a><a href="#contact">Contact</a></div>
+
+<main>
+<article class="w hero rise" id="home">
+  <div class="t">nithish_kumar.exe<i></i></div>
+  <div class="c">
+    <h1>Nithish Kumar M</h1>
+    <svg class="mono" id="mono" viewBox="0 0 13 7" shape-rendering="crispEdges" role="img" aria-label="Monogram: N K"></svg>
+    <p class="tag">I like figuring out how things work, then building my own.</p>
+    <p><span class="now">currently: learning to write C and Python that actually runs</span></p>
+    <div class="row"><a class="btn y" href="#about">Explore</a><a class="btn" href="#contact">Say hi</a></div>
+  </div>
+</article>
+
+<article class="w" id="about">
+  <div class="t">about_me.txt<i></i></div>
+  <div class="c">
+    <h2>Hi, I'm Nithish.</h2>
+    <p>I'm a first-year B.Tech student in Information Technology, and I'm still at the stage where every new thing I learn opens three more questions. I've decided that's the fun part.</p>
+    <p>I started out just using computers, then got curious about why they do what they do. Now I'm writing small programs, breaking them, and fixing them, usually in that order.</p>
+    <p>I'm not trying to look like an expert yet. I'm trying to be someone who keeps showing up, asks good questions, and gets a little better each week.</p>
+  </div>
+</article>
+
+<article class="w" id="skills">
+  <div class="t">skills.dat<i></i></div>
+  <div class="c">
+    <h2>What I can do, honestly</h2>
+    <dl>
+      <div><dt>HTML and CSS</dt><dd class="k">Comfortable</dd></div>
+      <div><dt>Python</dt><dd class="k">Comfortable</dd></div>
+      <div><dt>C programming</dt><dd class="l">Learning</dd></div>
+      <div><dt>JavaScript</dt><dd class="l">Learning</dd></div>
+      <div><dt>Git and GitHub</dt><dd class="l">Learning</dd></div>
+      <div><dt>Data structures</dt><dd>Just starting</dd></div>
+    </dl>
+  </div>
+</article>
+
+<article class="w" id="journey">
+  <div class="t">journey.log<i></i></div>
+  <div class="c">
+    <h2>Made, learning, next</h2>
+    <div class="j">
+      <section class="a"><h3>Made</h3><ul><li>Small Python programs and practice exercises</li><li>This portfolio, by hand</li><li>A few web pages to test ideas</li></ul></section>
+      <section class="b"><h3>Learning now</h3><ul><li>C and how memory works</li><li>JavaScript for the browser</li><li>Using Git without fear</li></ul></section>
+      <section class="d"><h3>Want to build</h3><ul><li>A useful app for my own campus</li><li>A small game</li><li>Something that helps someone else</li></ul></section>
+    </div>
+  </div>
+</article>
+
+<article class="w" id="beyond">
+  <div class="t">beyond_code.doc<i></i></div>
+  <div class="c">
+    <h2>The rest of me</h2>
+    <div class="fun">
+      <p>I like music while I work, and I change playlists more often than I change code.</p>
+      <p>I'll happily take a walk to think through a bug.</p>
+      <p>Fun fact: my first program printed my own name, and I was weirdly proud of it.</p>
+      <p>Fun fact: I trust a debugger a little less than I trust a good night's sleep.</p>
+    </div>
+  </div>
+</article>
+
+<article class="w" id="contact">
+  <div class="t">say_hi.mail<i></i></div>
+  <div class="c">
+    <h2>Say hi</h2>
+    <p>If you want to talk code, projects, or just say hello, I'd like that.</p>
+    <p><span class="big"><a href="mailto:nithish@example.com">nithish@example.com</a></span></p>
+    <div class="row" style="margin-top:16px"><a class="btn y" href="https://www.linkedin.com/in/your-name" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/your-name" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</article>
+</main>
+
+<div class="bar bot">
+  <a class="btn y" href="#contact">Say hi</a>
+  <button id="bin" title="Recycle Bin. Something's in there." aria-label="Recycle bin">
+    <svg width="28" height="32" viewBox="0 0 7 8" shape-rendering="crispEdges"><path fill="#13201f" d="M2 0h3v1h2v1H0V1h2zM1 3h5v5H1z"/><path fill="#f2b632" d="M2 4h1v3H2zm2 0h1v3H4z"/></svg>
+  </button>
+  <span class="clock" id="clock">00:00</span>
+</div>
+
+<dialog id="egg">
+  <div class="t">error.exe<i></i></div>
+  <div class="c" style="padding:18px">
+    <p><b style="font-family:var(--d);font-size:14px">File not found: a bug-free first draft.</b></p>
+    <p>You dug through my recycle bin. My first program crashed 14 times before it said hello. Keep going, yours will too.</p>
+    <div class="row" style="margin-top:16px"><button class="btn y" id="ok">OK</button></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* pixel monogram */
+var N=["10001","11001","10101","10101","10011","10001","10001"],K=["10001","10010","10100","11000","10100","10010","10001"],s="";
+function g(m,ox){for(var y=0;y<7;y++)for(var x=0;x<5;x++)if(m[y][x]=="1")s+='<rect x="'+(x+ox)+'" y="'+y+'" width="1" height="1" fill="#13201f"/>'}
+g(N,0);g(K,8);s+='<rect x="6" y="6" width="1" height="1" fill="#1d7373"/>';
+document.getElementById('mono').innerHTML=s;
+/* clock */
+function tick(){var d=new Date();document.getElementById('clock').textContent=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2)}tick();setInterval(tick,30000);
+/* opening: plays once, under 2.5s */
+var intro=document.getElementById('intro'),done=false;
+function close(){if(done)return;done=true;intro.classList.add('out');setTimeout(function(){intro.remove()},reduce?10:600)}
+document.getElementById('skip').onclick=close;
+setTimeout(close,reduce?300:1700);
+/* signature: pixel cursor trail */
+var last=0;
+function drop(x,y){var n=Date.now();if(n-last<40||reduce)return;last=n;var p=document.createElement('div');p.className='px';p.style.left=(Math.round(x/10)*10)+'px';p.style.top=(Math.round(y/10)*10)+'px';document.body.appendChild(p);setTimeout(function(){p.remove()},700)}
+addEventListener('pointermove',function(e){drop(e.clientX,e.clientY)});
+/* easter egg */
+var egg=document.getElementById('egg');
+document.getElementById('bin').onclick=function(){egg.showModal()};
+document.getElementById('ok').onclick=function(){egg.close()};
+})();
+</script>
+</body>
+</html>
